@@ -5,7 +5,7 @@
  */
 package br.edu.ifce.thread;
 
-import br.edu.ifce.view.TelaPrincipal;
+import view.TelaPrincipal;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;

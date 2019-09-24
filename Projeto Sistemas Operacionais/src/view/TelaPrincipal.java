@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifce.view;
+package view;
 
 import br.edu.ifce.log.TabelaLog;
 import br.edu.ifce.thread.Crianca;
@@ -580,11 +580,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Label_Campo_obrigatorio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea_Log = new javax.swing.JTextArea();
-        Label_titulo = new javax.swing.JLabel();
-        Button_Sair = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         table_log = new javax.swing.JTable();
-        painelImagemQuadra1 = new br.edu.ifce.view.PainelImagemQuadra();
+        painelImagemQuadra1 = new view.PainelImagemQuadra();
         jLabelCrianca1 = new javax.swing.JLabel();
         jLabelCrianca2 = new javax.swing.JLabel();
         jLabelCrianca3 = new javax.swing.JLabel();
@@ -607,7 +605,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Brincadeira de Crianças");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
 
@@ -687,37 +684,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ControleDeCriancasLayout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ControleDeCriancasLayout.createSequentialGroup()
-                        .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                                .addComponent(Label_Nome)
-                                .addGap(23, 23, 23)
-                                .addComponent(TextField_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Separador)
-                                .addComponent(Label_NovaCrianca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Label_Tempo_quieto)
-                                .addComponent(Label_Tempo_brincando)
-                                .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                                    .addComponent(Label_Id)
-                                    .addGap(42, 42, 42)
-                                    .addComponent(TextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(TextField_Tempo_brincando, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                                    .addComponent(Label_Possui_bola)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(RadioButton_SIM)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(RadioButton_NAO))
-                                .addComponent(TextField_Tempo_quieta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ControleDeCriancasLayout.createSequentialGroup()
-                        .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))))
+                    .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                        .addComponent(Label_Nome)
+                        .addGap(23, 23, 23)
+                        .addComponent(TextField_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Separador)
+                        .addComponent(Label_NovaCrianca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Label_Tempo_quieto)
+                        .addComponent(Label_Tempo_brincando)
+                        .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                            .addComponent(Label_Id)
+                            .addGap(42, 42, 42)
+                            .addComponent(TextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(TextField_Tempo_brincando, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                            .addComponent(Label_Possui_bola)
+                            .addGap(18, 18, 18)
+                            .addComponent(RadioButton_SIM)
+                            .addGap(18, 18, 18)
+                            .addComponent(RadioButton_NAO))
+                        .addComponent(TextField_Tempo_quieta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32))
         );
         Panel_ControleDeCriancasLayout.setVerticalGroup(
             Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,28 +742,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(TextField_Tempo_quieta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         TextArea_Log.setColumns(20);
         TextArea_Log.setRows(10);
         TextArea_Log.setToolTipText("Log");
         jScrollPane1.setViewportView(TextArea_Log);
-
-        Label_titulo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        Label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Label_titulo.setText("Brincadeira de Crianças");
-
-        Button_Sair.setBackground(new java.awt.Color(255, 153, 153));
-        Button_Sair.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        Button_Sair.setText("Sair");
-        Button_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_SairActionPerformed(evt);
-            }
-        });
 
         table_log.setBackground(new java.awt.Color(240, 255, 240));
         table_log.setModel(new javax.swing.table.DefaultTableModel(
@@ -790,107 +770,89 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelImagemQuadra1.setBackground(new java.awt.Color(255, 255, 204));
         painelImagemQuadra1.setMaximumSize(new java.awt.Dimension(900, 570));
         painelImagemQuadra1.setMinimumSize(new java.awt.Dimension(900, 570));
+        painelImagemQuadra1.setPreferredSize(new java.awt.Dimension(900, 570));
 
-        jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca1.setText("Crianca1");
 
-        jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca2.setText("Crianca2");
 
-        jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca3.setText("Crianca3");
 
-        jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca4.setText("Crianca4");
 
-        jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca5.setText("Crianca5");
 
-        jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca6.setText("Crianca6");
 
-        jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca7.setText("Crianca7");
 
-        jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca8.setText("Crianca8");
 
-        jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca9.setText("Crianca9");
 
-        jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca10.setText("Crianca10");
 
         javax.swing.GroupLayout painelImagemQuadra1Layout = new javax.swing.GroupLayout(painelImagemQuadra1);
         painelImagemQuadra1.setLayout(painelImagemQuadra1Layout);
         painelImagemQuadra1Layout.setHorizontalGroup(
             painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabelCrianca2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelCrianca6)
-                        .addGap(159, 159, 159))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelImagemQuadra1Layout.createSequentialGroup()
-                        .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelCrianca1)
-                                .addGap(199, 199, 199)
-                                .addComponent(jLabelCrianca3))
-                            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                                .addGap(96, 96, 96)
-                                .addComponent(jLabelCrianca10)
-                                .addGap(126, 126, 126)
-                                .addComponent(jLabelCrianca9)))
-                        .addGap(147, 147, 147)
-                        .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                                .addComponent(jLabelCrianca8)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabelCrianca7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)))))
+            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCrianca1)
+                    .addComponent(jLabelCrianca6))
                 .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabelCrianca5)
-                        .addGap(184, 184, 184))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                        .addComponent(jLabelCrianca4)
-                        .addGap(91, 91, 91))))
+                        .addGap(127, 127, 127)
+                        .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelCrianca7)
+                            .addComponent(jLabelCrianca2))
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabelCrianca3))
+                    .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(jLabelCrianca8)))
+                .addGap(33, 33, 33)
+                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCrianca9)
+                    .addComponent(jLabelCrianca4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCrianca10)
+                    .addComponent(jLabelCrianca5))
+                .addGap(112, 112, 112))
         );
         painelImagemQuadra1Layout.setVerticalGroup(
             painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                        .addComponent(jLabelCrianca9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                        .addComponent(jLabelCrianca10)
-                        .addGap(82, 82, 82))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                        .addComponent(jLabelCrianca7)
-                        .addGap(18, 18, 18)))
                 .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCrianca2)
                     .addComponent(jLabelCrianca6)
-                    .addComponent(jLabelCrianca5))
-                .addGap(57, 57, 57)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCrianca4)
+                    .addComponent(jLabelCrianca7)
                     .addComponent(jLabelCrianca8)
+                    .addComponent(jLabelCrianca9)
+                    .addComponent(jLabelCrianca10))
+                .addGap(29, 29, 29)
+                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCrianca1)
-                    .addComponent(jLabelCrianca3))
-                .addGap(46, 46, 46))
+                    .addComponent(jLabelCrianca2)
+                    .addComponent(jLabelCrianca3)
+                    .addComponent(jLabelCrianca4)
+                    .addComponent(jLabelCrianca5))
+                .addGap(102, 102, 102))
         );
 
-        jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/edu/ifce/view/imagens/cesto_sem_bola.png"))); // NOI18N
+        jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/cesto_sem_bola.png"))); // NOI18N
 
         jLabelCapacidade_cesto.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabelCapacidade_cesto.setText("Capacidade do Cesto");
@@ -936,57 +898,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCapacidade_cesto)
+                    .addComponent(jLabelQuantidade_atual_cesto)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelQuantidade_atual_cesto)
-                            .addComponent(jLabelCapacidade_cesto)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Button_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(61, 61, 61)
                         .addComponent(jLabelCesto)))
                 .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Label_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_titulo)
-                    .addComponent(Button_Sair))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelCapacidade_cesto)
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabelQuantidade_atual_cesto)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabelCesto)
-                        .addGap(54, 54, 54))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addComponent(jLabelCapacidade_cesto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelQuantidade_atual_cesto)
+                        .addGap(0, 30, Short.MAX_VALUE))
+                    .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCesto))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -1025,13 +974,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             this.resetForm(); //Reseta os valores dos campos do formulário
         }
     }//GEN-LAST:event_Button_CriarActionPerformed
-
-    /* Ação do botão Sair */
-    private void Button_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SairActionPerformed
-        // TODO add your handling code here:
-        int opcao = JOptionPane.showConfirmDialog(this, "Desejas realmente sair?", "Confirmação", JOptionPane.WARNING_MESSAGE);
-        if(opcao==0) System.exit(0);
-    }//GEN-LAST:event_Button_SairActionPerformed
 
     /* Ação do botão Descrição, presente na barra de menus na parte superior da tela */
     private void menuItem_DescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_DescricaoActionPerformed
@@ -1113,7 +1055,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Criar;
-    private javax.swing.JButton Button_Sair;
     private javax.swing.JLabel Label_Campo_obrigatorio;
     private javax.swing.JLabel Label_Id;
     private javax.swing.JLabel Label_Nome;
@@ -1121,7 +1062,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Label_Possui_bola;
     private javax.swing.JLabel Label_Tempo_brincando;
     private javax.swing.JLabel Label_Tempo_quieto;
-    private javax.swing.JLabel Label_titulo;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JPanel Panel_ControleDeCriancas;
     private javax.swing.JRadioButton RadioButton_NAO;
@@ -1152,7 +1092,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItem_Sobre;
     private javax.swing.JMenu menu_Descricao;
     private javax.swing.JMenu menu_Sobre;
-    private br.edu.ifce.view.PainelImagemQuadra painelImagemQuadra1;
+    private view.PainelImagemQuadra painelImagemQuadra1;
     private javax.swing.JTable table_log;
     // End of variables declaration//GEN-END:variables
 }

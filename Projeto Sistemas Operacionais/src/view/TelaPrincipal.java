@@ -22,184 +22,201 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private final int maximaCapacidadeDoCesto = 10;
     private final int maximoNumeroDeCriancas = 10;
     private int quantidadeBolasCesto = 0;
-    
-    TabelaLog tabelaLog = new TabelaLog();    
-    
+
+    TabelaLog tabelaLog = new TabelaLog();
+
     Semaphore cesto_full;
     Semaphore cesto_empty;
     Semaphore mutex;
-    
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
-        
-        JOptionPane.showMessageDialog(null, "Bem-vindo à Brincadeira de Crianças! Vamos brincar? =D", "Seja bem-vindo!", JOptionPane.INFORMATION_MESSAGE);
-        
+
+        JOptionPane.showMessageDialog(null, "Bem-vindo à Brincadeira de Crianças! Vamos brincar? =D", "Seja bem-vindo!",
+                JOptionPane.INFORMATION_MESSAGE);
+
         this.capacidadeDoCesto = this.lerCapacidadeDoCesto(this.maximaCapacidadeDoCesto);
-        
-        /* Cria os semáforos e seta um valor inicial para eles.
-         * mutex inicia com 1;
-         * cesto_full inicia com zero;
-         * cesto_empty inicia com a capacidade do cesto lida na linha 40;
+
+        /*
+         * Cria os semáforos e seta um valor inicial para eles. mutex inicia com 1;
+         * cesto_full inicia com zero; cesto_empty inicia com a capacidade do cesto lida
+         * na linha 40;
          */
         cesto_full = new Semaphore(0);
         cesto_empty = new Semaphore(this.capacidadeDoCesto);
         mutex = new Semaphore(1);
-        
-        this.TextField_ID.setText(Long.toString(id)); //Mostra o id no JTextField da tela;
-        this.table_log.setModel(tabelaLog); //Ver vídeo cujo link está na classe TabelaLog;
-        
-        /* Corrige o portugês da palavra bola(s), de acordo com a quantidade de bolas digitada pelo usuário */
-        if(this.capacidadeDoCesto == 1)
+
+        this.TextField_ID.setText(Long.toString(id)); // Mostra o id no JTextField da tela;
+        this.table_log.setModel(tabelaLog); // Ver vídeo cujo link está na classe TabelaLog;
+
+        /*
+         * Corrige o portugês da palavra bola(s), de acordo com a quantidade de bolas
+         * digitada pelo usuário
+         */
+        if (this.capacidadeDoCesto == 1)
             this.jLabelCapacidade_cesto.setText("Capacidade do Cesto = " + this.capacidadeDoCesto + " bola");
         else
             this.jLabelCapacidade_cesto.setText("Capacidade do Cesto = " + this.capacidadeDoCesto + " bolas");
-        
+
         /* Mostra apenas a imagem de fundo, sem crianças na tela */
         this.esconderCriancas();
-        
+
         /* Seta a cor de background do JFrame */
         this.getContentPane().setBackground(new java.awt.Color(255, 255, 204));
-        
-    } //Fim construtor();
-    
-    
+
+    } // Fim construtor();
+
     /**
-     * Faz a leitura da capacidade do cesto de bolas e valida o valor digitado pelo usuário
+     * Faz a leitura da capacidade do cesto de bolas e valida o valor digitado pelo
+     * usuário
      */
-    private int lerCapacidadeDoCesto(int maximaCapacidadeDoCesto){
+    private int lerCapacidadeDoCesto(int maximaCapacidadeDoCesto) {
         int k = 0;
         boolean valorInvalido = true;
-        String capacidadeDoCesto; //Recebe o valor digitado pelo usuário no JOptionPane, que, por sua vez, retorna uma String;
-        
-        while(valorInvalido){ //Fica preso no loop de leitura da quantidade de bolas do cesto enquanto o usuário não digitar um valor válido (1<= valorDigitado <= maximaCapacidadeDoCesto)
-            
-                do{
-                    capacidadeDoCesto = JOptionPane.showInputDialog(
-                                            this,
-                                            "Primeiramente, informe quantas bolas o cesto comporta? (máx. " + maximaCapacidadeDoCesto + ")",
-                                            "Capacidade do Cesto",
-                                            JOptionPane.QUESTION_MESSAGE
-                                        );
-                    
-                    //Usuário clicou em cancelar ou fechar no JOptionPane
-                    if(capacidadeDoCesto==null){
-                        int confirmacao = JOptionPane.showConfirmDialog(this, "Desejas fechar o programa?");  //Retorno showConfirmDialog: 0 = sim; 1 = não; 2 = cancelar; -1 = fechar;
-                        if(confirmacao==0) System.exit(0); //Fecha o programa;
-                        else
-                            capacidadeDoCesto = JOptionPane.showInputDialog(
-                                                    this,
-                                                    "Informe quantas bolas o cesto comporta? (máx. " + maximaCapacidadeDoCesto + ")",
-                                                    "Capacidade do Cesto",
-                                                    JOptionPane.QUESTION_MESSAGE
-                                                );
-                    }
-                    
-                    //Converte o valor obtido da capacidade do cesto para inteiro
-                    try{
-                        k = Integer.parseInt(capacidadeDoCesto);
-                    } catch(NumberFormatException e){ //Caso o usuário digite qualquer coisa que não seja um número, é lançado este erro.
-                        JOptionPane.showMessageDialog(this, "Valor inválido! Não é um número! Tente novamente.", "Valor inválido", JOptionPane.ERROR_MESSAGE);
-                    }
-                    
-                    //Controle de quantidade de bolas do cesto
-                    if(k<=0)
-                        JOptionPane.showMessageDialog(this, "Atenção! O valor deve ser maior ou igual a 1.", "Atenção! Valor inválido.", JOptionPane.WARNING_MESSAGE);
-                    else if(k > maximaCapacidadeDoCesto)
-                        JOptionPane.showMessageDialog(this, "Atenção! O valor é maior do que a capacidade máxima do cesto.", "Atenção! Valor inválido.", JOptionPane.WARNING_MESSAGE);
-                    
-                } while (k<=0 || k > maximaCapacidadeDoCesto);
-                
-                valorInvalido = false;
-                
-            
+        String capacidadeDoCesto; // Recebe o valor digitado pelo usuário no JOptionPane, que, por sua vez,
+                                  // retorna uma String;
+
+        while (valorInvalido) { // Fica preso no loop de leitura da quantidade de bolas do cesto enquanto o
+                                // usuário não digitar um valor válido (1<= valorDigitado <=
+                                // maximaCapacidadeDoCesto)
+
+            do {
+                capacidadeDoCesto = JOptionPane.showInputDialog(this,
+                        "Primeiramente, informe quantas bolas o cesto comporta? (máx. " + maximaCapacidadeDoCesto + ")",
+                        "Capacidade do Cesto", JOptionPane.QUESTION_MESSAGE);
+
+                // Usuário clicou em cancelar ou fechar no JOptionPane
+                if (capacidadeDoCesto == null) {
+                    int confirmacao = JOptionPane.showConfirmDialog(this, "Desejas fechar o programa?"); // Retorno
+                                                                                                         // showConfirmDialog:
+                                                                                                         // 0 = sim; 1 =
+                                                                                                         // não; 2 =
+                                                                                                         // cancelar; -1
+                                                                                                         // = fechar;
+                    if (confirmacao == 0)
+                        System.exit(0); // Fecha o programa;
+                    else
+                        capacidadeDoCesto = JOptionPane.showInputDialog(this,
+                                "Informe quantas bolas o cesto comporta? (máx. " + maximaCapacidadeDoCesto + ")",
+                                "Capacidade do Cesto", JOptionPane.QUESTION_MESSAGE);
+                }
+
+                // Converte o valor obtido da capacidade do cesto para inteiro
+                try {
+                    k = Integer.parseInt(capacidadeDoCesto);
+                } catch (NumberFormatException e) { // Caso o usuário digite qualquer coisa que não seja um número, é
+                                                    // lançado este erro.
+                    JOptionPane.showMessageDialog(this, "Valor inválido! Não é um número! Tente novamente.",
+                            "Valor inválido", JOptionPane.ERROR_MESSAGE);
+                }
+
+                // Controle de quantidade de bolas do cesto
+                if (k <= 0)
+                    JOptionPane.showMessageDialog(this, "Atenção! O valor deve ser maior ou igual a 1.",
+                            "Atenção! Valor inválido.", JOptionPane.WARNING_MESSAGE);
+                else if (k > maximaCapacidadeDoCesto)
+                    JOptionPane.showMessageDialog(this, "Atenção! O valor é maior do que a capacidade máxima do cesto.",
+                            "Atenção! Valor inválido.", JOptionPane.WARNING_MESSAGE);
+
+            } while (k <= 0 || k > maximaCapacidadeDoCesto);
+
+            valorInvalido = false;
+
         }
         this.logMessage("Capacidade do Cesto = " + k + " bolas\n");
         return k;
-    } //Fim lerCapacidadeDoCesto();
-    
-    
-    /* 
-     * Mostra a imagem de cesto cheio, cesto vazio ou cesto com bola de acordo com a quantidade de bolas do cesto.
+    } // Fim lerCapacidadeDoCesto();
+
+    /*
+     * Mostra a imagem de cesto cheio, cesto vazio ou cesto com bola de acordo com a
+     * quantidade de bolas do cesto.
      */
-    public void adicionarBolaNoCesto(){
+    public void adicionarBolaNoCesto() {
         this.quantidadeBolasCesto++;
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(this.quantidadeBolasCesto == this.capacidadeDoCesto)
+
+        if (this.quantidadeBolasCesto == this.capacidadeDoCesto)
             this.jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_cheio.png")));
         else
-            this.jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_com_bola.png")));
-        
-        /* Corrige o português da palavra bola(s), de acordo com a quantidade de bolas no cesto */
-        if(this.quantidadeBolasCesto==1)
+            this.jLabelCesto
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_com_bola.png")));
+
+        /*
+         * Corrige o português da palavra bola(s), de acordo com a quantidade de bolas
+         * no cesto
+         */
+        if (this.quantidadeBolasCesto == 1)
             this.jLabelQuantidade_atual_cesto.setText("Qtd. Atual = " + this.quantidadeBolasCesto + " bola");
         else
             this.jLabelQuantidade_atual_cesto.setText("Qtd. Atual = " + this.quantidadeBolasCesto + " bolas");
     }
-    
+
     /*
      * Semelhante à função adicionarBolaNoCesto();
      */
-    public void removerBolaDoCesto(){
+    public void removerBolaDoCesto() {
         this.quantidadeBolasCesto--;
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(this.quantidadeBolasCesto == 0)
-            this.jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_sem_bola.png")));
+
+        if (this.quantidadeBolasCesto == 0)
+            this.jLabelCesto
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_sem_bola.png")));
         else
-            this.jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_com_bola.png")));
-        
-        if(this.quantidadeBolasCesto == 1)
+            this.jLabelCesto
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_com_bola.png")));
+
+        if (this.quantidadeBolasCesto == 1)
             this.jLabelQuantidade_atual_cesto.setText("Qtd. Atual = " + this.quantidadeBolasCesto + " bola");
         else
             this.jLabelQuantidade_atual_cesto.setText("Qtd. Atual = " + this.quantidadeBolasCesto + " bolas");
     }
-    
+
     /**
-     * Verifica se todos os campos do formulário estão preenchidos, antes de ser criada uma nova criança.
-     * Seta borda vermelha em campos vazios e mostra mensagem de campos vazios.
-     * Obs.: todos os campos retornam uma String.
-    */
-    private boolean validaPreenchimentoTextField(){
-        int aux = 0; //Variável contadora de campos vazios.
-        
-        if(this.TextField_ID.getText().equals("")){
+     * Verifica se todos os campos do formulário estão preenchidos, antes de ser
+     * criada uma nova criança. Seta borda vermelha em campos vazios e mostra
+     * mensagem de campos vazios. Obs.: todos os campos retornam uma String.
+     */
+    private boolean validaPreenchimentoTextField() {
+        int aux = 0; // Variável contadora de campos vazios.
+
+        if (this.TextField_ID.getText().equals("")) {
             this.TextField_ID.setBorder(BorderFactory.createLineBorder(RED, 1));
             aux++;
         }
-        
-        if(this.TextField_Nome.getText().equals("")){
+
+        if (this.TextField_Nome.getText().equals("")) {
             this.TextField_Nome.setBorder(BorderFactory.createLineBorder(RED, 1));
             aux++;
         }
-        if(!this.RadioButton_SIM.isSelected() && !this.RadioButton_NAO.isSelected()){
+        if (!this.RadioButton_SIM.isSelected() && !this.RadioButton_NAO.isSelected()) {
             this.Label_Possui_bola.setBorder(BorderFactory.createLineBorder(RED, 1));
             aux++;
         }
-        if(this.TextField_Tempo_brincando.getText().equals("")){
+        if (this.TextField_Tempo_brincando.getText().equals("")) {
             this.TextField_Tempo_brincando.setBorder(BorderFactory.createLineBorder(RED, 1));
             aux++;
         }
-        if(this.TextField_Tempo_quieta.getText().equals("")){
+        if (this.TextField_Tempo_quieta.getText().equals("")) {
             this.TextField_Tempo_quieta.setBorder(BorderFactory.createLineBorder(RED, 1));
             aux++;
         }
-        
-        if(aux>0){
+
+        if (aux > 0) {
             this.Label_Campo_obrigatorio.setForeground(new java.awt.Color(255, 0, 0));
             this.Label_Campo_obrigatorio.setText(aux + " campos obrigatórios vazios");
-            return false; //Falha
+            return false; // Falha
         }
         this.Label_Campo_obrigatorio.setText("0 campos obrigatórios vazios");
-        return true; //Sucesso;
-    } //Fim validaPreenchimentoTextField();
-    
-    
-    /* Esconde todas as crianças da tela. Função chamada no construtor desta classe */
-    private void esconderCriancas(){
+        return true; // Sucesso;
+    } // Fim validaPreenchimentoTextField();
+
+    /*
+     * Esconde todas as crianças da tela. Função chamada no construtor desta classe
+     */
+    private void esconderCriancas() {
         this.jLabelCrianca1.setVisible(false);
         this.jLabelCrianca2.setVisible(false);
         this.jLabelCrianca3.setVisible(false);
@@ -210,355 +227,431 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.jLabelCrianca8.setVisible(false);
         this.jLabelCrianca9.setVisible(false);
         this.jLabelCrianca10.setVisible(false);
-    } //Fim esconderCriancas();
-    
+    } // Fim esconderCriancas();
+
     /**
-     * FUNÇÃO DE LAYOUT-ESTÉTICA: seta as bordas dos campos de texto do formulário para cinza claro.
-     * Necessária quando houver campos inválidos, para a borda não ficar mais vermelha, quando esses campos forem ajustados e o usuário clicar em "Criar".
+     * FUNÇÃO DE LAYOUT-ESTÉTICA: seta as bordas dos campos de texto do formulário
+     * para cinza claro. Necessária quando houver campos inválidos, para a borda não
+     * ficar mais vermelha, quando esses campos forem ajustados e o usuário clicar
+     * em "Criar".
      */
-    private void setBordaCinza(){
-        
-        java.awt.Color corCinza = new java.awt.Color(153,153,153);
-        
+    private void setBordaCinza() {
+
+        java.awt.Color corCinza = new java.awt.Color(153, 153, 153);
+
         this.TextField_ID.setBorder(BorderFactory.createLineBorder(corCinza, 1));
         this.TextField_Nome.setBorder(BorderFactory.createLineBorder(corCinza, 1));
-     
-        //Exceção: seta a borda para amarelo-claro
-        this.Label_Possui_bola.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,255,204), 1));
-     
+
+        // Exceção: seta a borda para amarelo-claro
+        this.Label_Possui_bola.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255, 255, 204), 1));
+
         this.TextField_Tempo_brincando.setBorder(BorderFactory.createLineBorder(corCinza, 1));
         this.TextField_Tempo_quieta.setBorder(BorderFactory.createLineBorder(corCinza, 1));
         this.Label_Campo_obrigatorio.setForeground(new java.awt.Color(255, 255, 204));
-    } //Fim setBordaCinza();
-    
-    /* Bloqueia os campos do formulário para digitação e o botão de criação de uma nova criança.
-     * Função chamada quando o número máximo de crianças, setado nos atributos desta classe, é atingido.
-     * Utilizada na função resetForm();
+    } // Fim setBordaCinza();
+
+    /*
+     * Bloqueia os campos do formulário para digitação e o botão de criação de uma
+     * nova criança. Função chamada quando o número máximo de crianças, setado nos
+     * atributos desta classe, é atingido. Utilizada na função resetForm();
      */
-    private void bloquearAdicaoDeCrianca(){
+    private void bloquearAdicaoDeCrianca() {
         this.TextField_Nome.setEnabled(false);
         this.RadioButton_SIM.setEnabled(false);
         this.RadioButton_NAO.setEnabled(false);
         this.TextField_Tempo_brincando.setEnabled(false);
         this.TextField_Tempo_quieta.setEnabled(false);
         this.Button_Criar.setEnabled(false);
-    } //Fim bloquearAdicaoDeCrianca();
-    
+    } // Fim bloquearAdicaoDeCrianca();
+
     /**
-     * Reseta o formulário de criação de uma nova criança, colocando um texto vazio nos campos.
-     * Quando o usuário criar uma nova criança, os campos de texto são limpos.
-    */
-    private void resetForm(){
-        this.id = this.id + 1; //Id auto-increment
-        
-        if(id > this.maximoNumeroDeCriancas){
+     * Reseta o formulário de criação de uma nova criança, colocando um texto vazio
+     * nos campos. Quando o usuário criar uma nova criança, os campos de texto são
+     * limpos.
+     */
+    private void resetForm() {
+        this.id = this.id + 1; // Id auto-increment
+
+        if (id > this.maximoNumeroDeCriancas) {
             this.bloquearAdicaoDeCrianca();
             this.TextField_ID.setText("-");
             this.Label_Campo_obrigatorio.setForeground(new java.awt.Color(0, 0, 255));
             this.Label_Campo_obrigatorio.setText("Nº máximo de crianças atingido");
         } else {
-            this.TextField_ID.setText(Long.toString(this.id)); //Atualiza o ID na tela;
+            this.TextField_ID.setText(Long.toString(this.id)); // Atualiza o ID na tela;
         }
-        
+
         this.TextField_Nome.setText("");
         this.buttonGroup_possuiBola.clearSelection();
         this.TextField_Tempo_brincando.setText("");
         this.TextField_Tempo_quieta.setText("");
-    } //Fim resetForm();
+    } // Fim resetForm();
 
     /**
-     * Função chamada na função ActionPerformed do botão Criar;
-     * Cria uma nova thread Criança e inicia sua execução.
-     * Também adiciona os dados da criança criada na tabela.
+     * Função chamada na função ActionPerformed do botão Criar; Cria uma nova thread
+     * Criança e inicia sua execução. Também adiciona os dados da criança criada na
+     * tabela.
      */
-    private void adicionarCrianca(long id, String nome, boolean possuiBola, long tempoBrincando, long tempoQuieta){
-        
-        Thread crianca = new Crianca(this, id, nome, possuiBola, tempoBrincando, tempoQuieta, cesto_full, cesto_empty, mutex);
-        crianca.start(); //Inicia a execução da thread
-        
+    private void adicionarCrianca(long id, String nome, boolean possuiBola, long tempoBrincando, long tempoQuieta) {
+
+        Thread crianca = new Crianca(this, id, nome, possuiBola, tempoBrincando, tempoQuieta, cesto_full, cesto_empty,
+                mutex);
+        crianca.start(); // Inicia a execução da thread
+
         this.logMessage("\n***Criança " + nome + " criada***\n");
-        this.tabelaLog.adicionarLinha((Crianca)crianca);
-    } //Fim adicionarCrianca();
-    
-    /* Mostra o texto de log recebido como parâmetro na JTextArea da tela.
-     * Função bastante utilizada ao longo da thread Criança e nos seus respectivos métodos.
+        this.tabelaLog.adicionarLinha((Crianca) crianca);
+    } // Fim adicionarCrianca();
+
+    /*
+     * Mostra o texto de log recebido como parâmetro na JTextArea da tela. Função
+     * bastante utilizada ao longo da thread Criança e nos seus respectivos métodos.
      */
     public void logMessage(String message) {
-        this.TextArea_Log.append(message + "\n"); //Inclui o texto na JTextArea;
-        this.TextArea_Log.setCaretPosition(this.TextArea_Log.getText().length()); //Coloca o cursor sempre para a última linha adicionada na JTextArea. Assim, log vai subindo automaticamente.
-    } //Fim logMessage();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
+        this.TextArea_Log.append(message + "\n"); // Inclui o texto na JTextArea;
+        this.TextArea_Log.setCaretPosition(this.TextArea_Log.getText().length()); // Coloca o cursor sempre para a
+                                                                                  // última linha adicionada na
+                                                                                  // JTextArea. Assim, log vai subindo
+                                                                                  // automaticamente.
+    } // Fim logMessage();
+
+    // Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim
+    // o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaBrincando_estado1(long id, String nome) {
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
+
+        if (id == 1L) {
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 2L){
+            this.jLabelCrianca1
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 2L) {
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 3L){
+            this.jLabelCrianca2
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 3L) {
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 4L){
+            this.jLabelCrianca3
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 4L) {
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 5L){
+            this.jLabelCrianca4
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 5L) {
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 6L){
+            this.jLabelCrianca5
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 6L) {
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 7L){
+            this.jLabelCrianca6
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 7L) {
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 8L){
+            this.jLabelCrianca7
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 8L) {
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 9L){
+            this.jLabelCrianca8
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 9L) {
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
-        } else if(id == 10L){
+            this.jLabelCrianca9
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+        } else if (id == 10L) {
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+            this.jLabelCrianca10
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
         }
-    } //Fim mostraCriancaBrincando_estado1();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
+    } // Fim mostraCriancaBrincando_estado1();
+
+    // Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim
+    // o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaBrincando_estado2(long id, String nome) {
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
+
+        if (id == 1L) {
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 2L){
+            this.jLabelCrianca1
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 2L) {
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 3L){
+            this.jLabelCrianca2
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 3L) {
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 4L){
+            this.jLabelCrianca3
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 4L) {
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 5L){
+            this.jLabelCrianca4
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 5L) {
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 6L){
+            this.jLabelCrianca5
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 6L) {
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 7L){
+            this.jLabelCrianca6
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 7L) {
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 8L){
+            this.jLabelCrianca7
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 8L) {
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 9L){
+            this.jLabelCrianca8
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 9L) {
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
-        } else if(id == 10L){
+            this.jLabelCrianca9
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+        } else if (id == 10L) {
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+            this.jLabelCrianca10
+                    .setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
         }
-    } //Fim mostraCriancaBrincando_estado2();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
+    } // Fim mostraCriancaBrincando_estado2();
+
+    // Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim
+    // o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaQuieta_estado1(long id, String nome) {
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
+
+        if (id == 1L) {
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 2L){
+            this.jLabelCrianca1.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 2L) {
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 3L){
+            this.jLabelCrianca2.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 3L) {
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 4L){
+            this.jLabelCrianca3.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 4L) {
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 5L){
+            this.jLabelCrianca4.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 5L) {
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 6L){
+            this.jLabelCrianca5.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 6L) {
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 7L){
+            this.jLabelCrianca6.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 7L) {
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 8L){
+            this.jLabelCrianca7.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 8L) {
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 9L){
+            this.jLabelCrianca8.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 9L) {
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 10L){
+            this.jLabelCrianca9.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+        } else if (id == 10L) {
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+            this.jLabelCrianca10.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
         }
-    } //Fim mostrarCriancaQuieta_estado1();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
+    } // Fim mostrarCriancaQuieta_estado1();
+
+    // Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim
+    // o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaQuieta_estado2(long id, String nome) {
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
+
+        if (id == 1L) {
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 2L){
+            this.jLabelCrianca1.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 2L) {
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 3L){
+            this.jLabelCrianca2.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 3L) {
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 4L){
+            this.jLabelCrianca3.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 4L) {
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 5L){
+            this.jLabelCrianca4.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 5L) {
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 6L){
+            this.jLabelCrianca5.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 6L) {
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 7L){
+            this.jLabelCrianca6.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 7L) {
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 8L){
+            this.jLabelCrianca7.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 8L) {
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 9L){
+            this.jLabelCrianca8.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 9L) {
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 10L){
+            this.jLabelCrianca9.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+        } else if (id == 10L) {
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
+            this.jLabelCrianca10.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         }
-    } //Fim mostrarCriancaQuieta_estado2();
-        
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
+    } // Fim mostrarCriancaQuieta_estado2();
+
+    // Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim
+    // o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaAguardandoVagaNoCesto(long id) {
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 2L){
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 3L){
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 4L){
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 5L){
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 6L){
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 7L){
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 8L){
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 9L){
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
-        } else if(id == 10L){
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+
+        if (id == 1L) {
+            this.jLabelCrianca1.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 2L) {
+            this.jLabelCrianca2.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 3L) {
+            this.jLabelCrianca3.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 4L) {
+            this.jLabelCrianca4.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 5L) {
+            this.jLabelCrianca5.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 6L) {
+            this.jLabelCrianca6.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 7L) {
+            this.jLabelCrianca7.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 8L) {
+            this.jLabelCrianca8.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 9L) {
+            this.jLabelCrianca9.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
+        } else if (id == 10L) {
+            this.jLabelCrianca10.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
         }
-    } //Fim mostrarCriancaAguardandoVagaNoCesto();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
+    } // Fim mostrarCriancaAguardandoVagaNoCesto();
+
+    // Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim
+    // o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaAguardandoBola(long id, String nome) {
         String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
+
+        if (id == 1L) {
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 2L){
+            this.jLabelCrianca1.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 2L) {
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 3L){
+            this.jLabelCrianca2.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 3L) {
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 4L){
+            this.jLabelCrianca3.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 4L) {
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 5L){
+            this.jLabelCrianca4.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 5L) {
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 6L){
+            this.jLabelCrianca5.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 6L) {
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 7L){
+            this.jLabelCrianca6.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 7L) {
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 8L){
+            this.jLabelCrianca7.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 8L) {
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 9L){
+            this.jLabelCrianca8.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 9L) {
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
-        } else if(id == 10L){
+            this.jLabelCrianca9.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+        } else if (id == 10L) {
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
+            this.jLabelCrianca10.setIcon(
+                    new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_bola.png")));
         }
-    } //Fim mostrarCriancaAguardandoBola();
-    
+    } // Fim mostrarCriancaAguardandoBola();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
-    
+
     /* Código gerado automaticamente */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         buttonGroup_possuiBola = new javax.swing.ButtonGroup();
@@ -657,7 +750,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         TextField_Tempo_brincando.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         TextField_Tempo_brincando.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TextField_Tempo_brincando.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        TextField_Tempo_brincando
+                .setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         TextField_Tempo_quieta.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         TextField_Tempo_quieta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -679,73 +773,84 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         javax.swing.GroupLayout Panel_ControleDeCriancasLayout = new javax.swing.GroupLayout(Panel_ControleDeCriancas);
         Panel_ControleDeCriancas.setLayout(Panel_ControleDeCriancasLayout);
-        Panel_ControleDeCriancasLayout.setHorizontalGroup(
-            Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ControleDeCriancasLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                        .addComponent(Label_Nome)
-                        .addGap(23, 23, 23)
-                        .addComponent(TextField_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Separador)
-                        .addComponent(Label_NovaCrianca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Label_Tempo_quieto)
-                        .addComponent(Label_Tempo_brincando)
-                        .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                            .addComponent(Label_Id)
-                            .addGap(42, 42, 42)
-                            .addComponent(TextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(TextField_Tempo_brincando, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                            .addComponent(Label_Possui_bola)
-                            .addGap(18, 18, 18)
-                            .addComponent(RadioButton_SIM)
-                            .addGap(18, 18, 18)
-                            .addComponent(RadioButton_NAO))
-                        .addComponent(TextField_Tempo_quieta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32))
-        );
-        Panel_ControleDeCriancasLayout.setVerticalGroup(
-            Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(Label_NovaCrianca, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Id)
-                    .addComponent(TextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Nome)
-                    .addComponent(TextField_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioButton_SIM)
-                    .addComponent(RadioButton_NAO)
-                    .addComponent(Label_Possui_bola))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Tempo_brincando)
-                    .addComponent(TextField_Tempo_brincando, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Tempo_quieto)
-                    .addComponent(TextField_Tempo_quieta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
+        Panel_ControleDeCriancasLayout.setHorizontalGroup(Panel_ControleDeCriancasLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ControleDeCriancasLayout
+                        .createSequentialGroup().addContainerGap(38, Short.MAX_VALUE)
+                        .addGroup(Panel_ControleDeCriancasLayout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                                        .addComponent(Label_Nome).addGap(23, 23, 23).addComponent(TextField_Nome,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE, 158,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(Panel_ControleDeCriancasLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Separador)
+                                        .addComponent(Label_NovaCrianca, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Label_Tempo_quieto).addComponent(Label_Tempo_brincando)
+                                        .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                                                .addComponent(Label_Id).addGap(42, 42, 42).addComponent(TextField_ID,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 158,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup().addGap(9, 9, 9)
+                                        .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(Panel_ControleDeCriancasLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TextField_Tempo_brincando, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                                                .addComponent(Label_Possui_bola).addGap(18, 18, 18)
+                                                .addComponent(RadioButton_SIM).addGap(18, 18, 18)
+                                                .addComponent(RadioButton_NAO))
+                                        .addComponent(TextField_Tempo_quieta, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)));
+        Panel_ControleDeCriancasLayout.setVerticalGroup(Panel_ControleDeCriancasLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup().addGap(41, 41, 41)
+                        .addComponent(Label_NovaCrianca, javax.swing.GroupLayout.PREFERRED_SIZE, 35,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_ControleDeCriancasLayout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(Label_Id)
+                                .addComponent(TextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_ControleDeCriancasLayout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Label_Nome).addComponent(TextField_Nome,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_ControleDeCriancasLayout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(RadioButton_SIM).addComponent(RadioButton_NAO)
+                                .addComponent(Label_Possui_bola))
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_ControleDeCriancasLayout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Label_Tempo_brincando).addComponent(TextField_Tempo_brincando,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Panel_ControleDeCriancasLayout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Label_Tempo_quieto).addComponent(TextField_Tempo_quieta,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 29,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(Button_Criar,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(44, Short.MAX_VALUE)));
 
         TextArea_Log.setColumns(20);
         TextArea_Log.setRows(10);
@@ -753,17 +858,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TextArea_Log);
 
         table_log.setBackground(new java.awt.Color(240, 255, 240));
-        table_log.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        table_log
+                .setModel(new javax.swing.table.DefaultTableModel(
+                        new Object[][] { { null, null, null, null }, { null, null, null, null },
+                                { null, null, null, null }, { null, null, null, null } },
+                        new String[] { "Title 1", "Title 2", "Title 3", "Title 4" }));
         table_log.setToolTipText("Lista de Crianças");
         jScrollPane3.setViewportView(table_log);
 
@@ -804,53 +903,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         javax.swing.GroupLayout painelImagemQuadra1Layout = new javax.swing.GroupLayout(painelImagemQuadra1);
         painelImagemQuadra1.setLayout(painelImagemQuadra1Layout);
-        painelImagemQuadra1Layout.setHorizontalGroup(
-            painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCrianca1)
-                    .addComponent(jLabelCrianca6))
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelCrianca7)
-                            .addComponent(jLabelCrianca2))
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabelCrianca3))
-                    .addGroup(painelImagemQuadra1Layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jLabelCrianca8)))
-                .addGap(33, 33, 33)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCrianca9)
-                    .addComponent(jLabelCrianca4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCrianca10)
-                    .addComponent(jLabelCrianca5))
-                .addGap(112, 112, 112))
-        );
-        painelImagemQuadra1Layout.setVerticalGroup(
-            painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCrianca6)
-                    .addComponent(jLabelCrianca7)
-                    .addComponent(jLabelCrianca8)
-                    .addComponent(jLabelCrianca9)
-                    .addComponent(jLabelCrianca10))
-                .addGap(29, 29, 29)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCrianca1)
-                    .addComponent(jLabelCrianca2)
-                    .addComponent(jLabelCrianca3)
-                    .addComponent(jLabelCrianca4)
-                    .addComponent(jLabelCrianca5))
-                .addGap(102, 102, 102))
-        );
+        painelImagemQuadra1Layout.setHorizontalGroup(painelImagemQuadra1Layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelImagemQuadra1Layout.createSequentialGroup().addGap(92, 92, 92)
+                        .addGroup(
+                                painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelCrianca1).addComponent(jLabelCrianca6))
+                        .addGroup(painelImagemQuadra1Layout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelImagemQuadra1Layout.createSequentialGroup().addGap(127, 127, 127)
+                                        .addGroup(painelImagemQuadra1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabelCrianca7).addComponent(jLabelCrianca2))
+                                        .addGap(35, 35, 35).addComponent(jLabelCrianca3))
+                                .addGroup(painelImagemQuadra1Layout
+                                        .createSequentialGroup().addGap(241, 241, 241).addComponent(jLabelCrianca8)))
+                        .addGap(33, 33, 33)
+                        .addGroup(
+                                painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelCrianca9).addComponent(jLabelCrianca4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addGroup(
+                                painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelCrianca10).addComponent(jLabelCrianca5))
+                        .addGap(112, 112, 112)));
+        painelImagemQuadra1Layout.setVerticalGroup(painelImagemQuadra1Layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(painelImagemQuadra1Layout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelCrianca6).addComponent(jLabelCrianca7).addComponent(jLabelCrianca8)
+                                .addComponent(jLabelCrianca9).addComponent(jLabelCrianca10))
+                        .addGap(29, 29, 29)
+                        .addGroup(painelImagemQuadra1Layout
+                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelCrianca1).addComponent(jLabelCrianca2).addComponent(jLabelCrianca3)
+                                .addComponent(jLabelCrianca4).addComponent(jLabelCrianca5))
+                        .addGap(102, 102, 102)));
 
         jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/cesto_sem_bola.png"))); // NOI18N
 
@@ -866,7 +956,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menu_Descricao.setText("Descrição");
         menu_Descricao.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
 
-        menuItem_Descricao.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        menuItem_Descricao.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         menuItem_Descricao.setText("Descição do Sistema");
         menuItem_Descricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -895,92 +986,92 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCapacidade_cesto)
-                    .addComponent(jLabelQuantidade_atual_cesto)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabelCesto)))
-                .addGap(23, 23, 23))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup().addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 597,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10,
+                                                Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelCapacidade_cesto).addComponent(jLabelQuantidade_atual_cesto)
+                                .addGroup(layout.createSequentialGroup().addGap(61, 61, 61).addComponent(jLabelCesto)))
+                        .addGap(23, 23, 23)));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
+                javax.swing.GroupLayout.Alignment.TRAILING,
+                layout.createSequentialGroup().addContainerGap(12, Short.MAX_VALUE).addGroup(layout
+                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelCapacidade_cesto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelQuantidade_atual_cesto).addGap(0, 30, Short.MAX_VALUE))
+                        .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelCapacidade_cesto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelQuantidade_atual_cesto)
-                        .addGap(0, 30, Short.MAX_VALUE))
-                    .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCesto))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelCesto))
+                        .addContainerGap(17, Short.MAX_VALUE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    //Ação do botão Criar
-    private void Button_CriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_CriarActionPerformed
+    // Ação do botão Criar
+    private void Button_CriarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Button_CriarActionPerformed
         // TODO add your handling code here:
         this.setBordaCinza();
-        
-        if(this.validaPreenchimentoTextField()){ //sucesso: todos os campos estão OK
- 
-            //Recebe os valores digitados na Tela e repassa-os para a função adicionarCrianca();
-            long id             = Long.parseLong(this.TextField_ID.getText());
-            String nome         = this.TextField_Nome.getText();
-            long tempoBrincando = Long.parseLong(this.TextField_Tempo_brincando.getText());
-            long tempoQuieta    = Long.parseLong(this.TextField_Tempo_quieta.getText());
-            
-            boolean possuiBola  = false; //Inicialização da variável
-            if(this.RadioButton_SIM.isSelected())       possuiBola = true;
-            else if(this.RadioButton_NAO.isSelected())  possuiBola = false;
-            
-           this.adicionarCrianca(id, nome, possuiBola, tempoBrincando, tempoQuieta);
-            
-            /*
-            System.out.println(id);
-            System.out.println(nome);
-            System.out.println(tempoBrincando);
-            System.out.println(tempoQuieta);
-            System.out.println(possuiBola);
-            System.out.println("Thread criada");
-            */
-            
-            this.setBordaCinza();
-            this.resetForm(); //Reseta os valores dos campos do formulário
-        }
-    }//GEN-LAST:event_Button_CriarActionPerformed
 
-    /* Ação do botão Descrição, presente na barra de menus na parte superior da tela */
-    private void menuItem_DescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_DescricaoActionPerformed
+        if (this.validaPreenchimentoTextField()) { // sucesso: todos os campos estão OK
+
+            // Recebe os valores digitados na Tela e repassa-os para a função
+            // adicionarCrianca();
+            long id = Long.parseLong(this.TextField_ID.getText());
+            String nome = this.TextField_Nome.getText();
+            long tempoBrincando = Long.parseLong(this.TextField_Tempo_brincando.getText());
+            long tempoQuieta = Long.parseLong(this.TextField_Tempo_quieta.getText());
+
+            boolean possuiBola = false; // Inicialização da variável
+            if (this.RadioButton_SIM.isSelected())
+                possuiBola = true;
+            else if (this.RadioButton_NAO.isSelected())
+                possuiBola = false;
+
+            this.adicionarCrianca(id, nome, possuiBola, tempoBrincando, tempoQuieta);
+
+            /*
+             * System.out.println(id); System.out.println(nome);
+             * System.out.println(tempoBrincando); System.out.println(tempoQuieta);
+             * System.out.println(possuiBola); System.out.println("Thread criada");
+             */
+
+            this.setBordaCinza();
+            this.resetForm(); // Reseta os valores dos campos do formulário
+        }
+    }// GEN-LAST:event_Button_CriarActionPerformed
+
+    /*
+     * Ação do botão Descrição, presente na barra de menus na parte superior da tela
+     */
+    private void menuItem_DescricaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItem_DescricaoActionPerformed
         // TODO add your handling code here:
-         JOptionPane.showMessageDialog(
-                this,
-                "Projeto I - Problema Brincadeira de Crianças\n\n"
+        JOptionPane.showMessageDialog(this, "Projeto I - Problema Brincadeira de Crianças\n\n"
                 + "Imagine N crianças que estão, a princípio, quietas. M (M<N) crianças inicialmente\n"
                 + "possuem uma bola e as outras, não. De repente, sentem vontade de brincar com uma bola.\n"
                 + "Com esse desejo incontrolável, as que já estão com a bola simplesmente brincam. As que\n"
@@ -991,37 +1082,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 + "estiver cheio, ela segura a bola até que outra criança retire uma bola que já está no cesto, e\n"
                 + "então solta sua bola no cesto e volta a ficar quieta. Admita que as crianças continuem\n"
                 + "brincando e descansando(quieta) eternamente. Utilizando semáforos, modele esse\n"
-                + "problema resolvendo os conflitos entre os N threads 'criança'.",
-                "Descrição do Sistema",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-    }//GEN-LAST:event_menuItem_DescricaoActionPerformed
+                + "problema resolvendo os conflitos entre os N threads 'criança'.", "Descrição do Sistema",
+                JOptionPane.INFORMATION_MESSAGE);
+    }// GEN-LAST:event_menuItem_DescricaoActionPerformed
 
     /* Ação do botão Sobre, presente na barra de menus na parte superior da tela */
-    private void menuItem_SobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_SobreActionPerformed
+    private void menuItem_SobreActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuItem_SobreActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(
-                this,
-                "Brincadeira de Crianças\n\n"
-                        + "Equipe:\n * Eduardo Maia Santos\n * Carlos Augusto Benevides\n * Rômulo Alberto\n * Rodrigo Viana Castelo Branco\n\n"
-                        + "Instituto Federal do Ceará - Campus Fortaleza\n"
-                        + "Disciplina: Sistemas Operacionais 2019.2\nProfessor: Fernando Parente Garcia",
-                "Sobre",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-    }//GEN-LAST:event_menuItem_SobreActionPerformed
+        JOptionPane.showMessageDialog(this, "Brincadeira de Crianças\n\n"
+                + "Equipe:\n * Eduardo Maia Santos\n * Carlos Augusto Benevides\n * Rômulo Alberto\n * Rodrigo Viana Castelo Branco\n\n"
+                + "Instituto Federal do Ceará - Campus Fortaleza\n"
+                + "Disciplina: Sistemas Operacionais 2019.2\nProfessor: Fernando Parente Garcia", "Sobre",
+                JOptionPane.INFORMATION_MESSAGE);
+    }// GEN-LAST:event_menuItem_SobreActionPerformed
 
-    
     /**
      * @param args the command line arguments
      * 
-     * Função main
+     *             Função main
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel. For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1031,15 +1118,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1049,10 +1140,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    /*Nomes das variáveis da tela. Seus nomes podem ser alterados somente ao clicar com o botão direito no componente e selecionara a opção "Alterar o nome da variável"
-     * Código gerado automaticamente
+    /*
+     * Nomes das variáveis da tela. Seus nomes podem ser alterados somente ao clicar
+     * com o botão direito no componente e selecionara a opção
+     * "Alterar o nome da variável" Código gerado automaticamente
      */
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Criar;
     private javax.swing.JLabel Label_Campo_obrigatorio;

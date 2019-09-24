@@ -122,7 +122,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="Panel_ControleDeCriancas" min="-2" max="-2" attributes="0"/>
@@ -130,7 +130,7 @@
                       <Component id="jLabelCapacidade_cesto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelQuantidade_atual_cesto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Component id="painelImagemQuadra1" max="32767" attributes="0"/>
               </Group>
@@ -502,27 +502,22 @@
                       <Component id="jLabelCrianca1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCrianca6" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabelCrianca7" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelCrianca2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jLabelCrianca3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                          <Component id="jLabelCrianca8" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabelCrianca7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelCrianca9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca4" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca8" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="100" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabelCrianca9" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelCrianca10" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCrianca5" min="-2" max="-2" attributes="0"/>
@@ -534,20 +529,20 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelCrianca6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca8" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca9" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCrianca10" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelCrianca1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCrianca4" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCrianca5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
@@ -562,6 +557,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca1"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca2">
@@ -570,6 +567,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca2"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca3">
@@ -578,6 +577,9 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca3"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca4">
@@ -586,6 +588,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca4"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca5">
@@ -594,6 +598,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca5"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca6">
@@ -602,6 +608,9 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca6"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca7">
@@ -610,6 +619,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca7"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca8">
@@ -618,6 +629,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca8"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca9">
@@ -626,6 +639,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca9"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca10">
@@ -634,6 +649,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca10"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
       </SubComponents>

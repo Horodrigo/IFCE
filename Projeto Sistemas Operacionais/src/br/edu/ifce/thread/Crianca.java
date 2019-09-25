@@ -9,9 +9,6 @@ import view.TelaPrincipal;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -27,9 +24,6 @@ public class Crianca extends Thread {
     private final String nome;
     private final long tempoDeBrincar;
     private final long tempoQuieta;
-
-    private List<Crianca> criancas = new ArrayList<>();
-    private String[] colunas = { "ID", "NOME", "INICIOU COM BOLA", "TEMPO BRINCANDO", "TEMPO QUIETA" };
 
     private final boolean iniciouComBola; // Criada apenas para mostrar na tabela de Crianças sem que seu valor seja
                                           // alterado;
@@ -147,7 +141,6 @@ public class Crianca extends Thread {
                             // logo após o método pegarBolaDoCesto() na linha 128;
 
                     // Libera todas as threads travadas pelos semáforos down
-                    e mutex;
                     down.release();
                     mutex.release();
                 }
@@ -263,42 +256,4 @@ public class Crianca extends Thread {
     }
 
     // Fim classe Crianca;
-    // log
-    @Override
-    public String getColumnName(int coluna) {
-        return colunas[coluna];
-    }
-
-    @Override
-    public int getRowCount() {
-        return criancas.size();
-    }
-
-    @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {
-        switch (coluna) {
-        case 0:
-            return criancas.get(linha).getIdCrianca();
-        case 1:
-            return criancas.get(linha).getNome();
-        case 2:
-            return criancas.get(linha).getIniciouComBola();
-        case 3:
-            return criancas.get(linha).getTempoDeBrincar();
-        case 4:
-            return criancas.get(linha).getTempoQuieta();
-        }
-        return null;
-    }
-
-    public void adicionarLinha(Crianca crianca) {
-        this.criancas.add(crianca);
-        this.fireTableDataChanged();
-    }
-
 }

@@ -12,24 +12,23 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * Esta tabela está presente na tela inicial do sistema e
- * mostra as crianças adicionadas e seus respectivos atributos.
+ * Esta tabela está presente na tela inicial do sistema e mostra as crianças
+ * adicionadas e seus respectivos atributos.
  *
- * Não vou me estender explicando-a, porque ela foi
- * desenvolvida com base no vídeo abaixo. Segue o link:
- * https://www.youtube.com/watch?v=ChiLQulv9_I
+ * Não vou me estender explicando-a, porque ela foi desenvolvida com base no
+ * vídeo abaixo. Segue o link: https://www.youtube.com/watch?v=ChiLQulv9_I
  * 
  */
-public class TabelaLog extends AbstractTableModel{
+public class TabelaLog extends AbstractTableModel {
 
     private List<Crianca> criancas = new ArrayList<>();
-    private String[] colunas = {"ID", "NOME", "INICIOU COM BOLA", "TEMPO BRINCANDO", "TEMPO QUIETA"};
-    
+    private String[] colunas = { "ID", "NOME", "INICIOU COM BOLA", "TEMPO BRINCANDO", "TEMPO QUIETA" };
+
     @Override
-    public String getColumnName(int coluna){
+    public String getColumnName(int coluna) {
         return colunas[coluna];
     }
-    
+
     @Override
     public int getRowCount() {
         return criancas.size();
@@ -42,24 +41,24 @@ public class TabelaLog extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int linha, int coluna) {
-        switch(coluna){
-            case 0:
-                return criancas.get(linha).getIdCrianca();
-            case 1:
-                return criancas.get(linha).getNome();
-            case 2:
-                return criancas.get(linha).getIniciouComBola();
-            case 3:
-                return criancas.get(linha).getTempoDeBrincar();
-            case 4:
-                return criancas.get(linha).getTempoQuieta();
+        switch (coluna) {
+        case 0:
+            return criancas.get(linha).getIdCrianca();
+        case 1:
+            return criancas.get(linha).getNome();
+        case 2:
+            return criancas.get(linha).getIniciouComBola();
+        case 3:
+            return criancas.get(linha).getTempoDeBrincar();
+        case 4:
+            return criancas.get(linha).getTempoQuieta();
         }
         return null;
     }
-    
-    public void adicionarLinha(Crianca crianca){
+
+    public void adicionarLinha(Crianca crianca) {
         this.criancas.add(crianca);
         this.fireTableDataChanged();
     }
-    
+
 }

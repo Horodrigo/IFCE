@@ -92,56 +92,56 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane3" min="-2" pref="597" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="286" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="painelImagemQuadra1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Panel_ControleDeCriancas" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelCapacidade_cesto" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelQuantidade_atual_cesto" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jLabelCesto" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+        <Group type="102" attributes="0">
+          <EmptySpace max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="102" attributes="0">
+              <Component id="jScrollPane3" min="-2" pref="597" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="286" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+            </Group>
+            <Group type="102" alignment="0" attributes="0">
+              <Component id="painelImagemQuadra1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
+            </Group>
           </Group>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Component id="Panel_ControleDeCriancas" alignment="0" min="-2" max="-2" attributes="0"/>
+            <Component id="jLabelCapacidade_cesto" min="-2" max="-2" attributes="0"/>
+            <Component id="jLabelQuantidade_atual_cesto" alignment="0" min="-2" max="-2" attributes="0"/>
+            <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Component id="jLabelCesto" min="-2" max="-2" attributes="0"/>
+            </Group>
+          </Group>
+          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+        </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="12" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="Panel_ControleDeCriancas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelCapacidade_cesto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelQuantidade_atual_cesto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="painelImagemQuadra1" max="32767" attributes="0"/>
-              </Group>
+        <Group type="102" alignment="1" attributes="0">
+          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="102" attributes="0">
+              <Component id="Panel_ControleDeCriancas" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane3" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="168" max="-2" attributes="0"/>
-                  <Component id="jLabelCesto" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <Component id="jLabelCapacidade_cesto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabelQuantidade_atual_cesto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+            </Group>
+            <Component id="painelImagemQuadra1" max="32767" attributes="0"/>
           </Group>
+          <EmptySpace max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Component id="jScrollPane3" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
+            <Component id="jScrollPane1" min="-2" pref="168" max="-2" attributes="0"/>
+            <Component id="jLabelCesto" alignment="0" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <EmptySpace pref="17" max="32767" attributes="0"/>
+        </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -163,85 +163,85 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Button_Criar" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="Label_Nome" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="TextField_Nome" min="-2" pref="158" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Separador" max="32767" attributes="0"/>
-                          <Component id="Label_NovaCrianca" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Label_Tempo_quieto" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Label_Tempo_brincando" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="Label_Id" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="TextField_ID" min="-2" pref="158" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="Label_Campo_obrigatorio" min="-2" pref="219" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="TextField_Tempo_brincando" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="Label_Possui_bola" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="RadioButton_SIM" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="RadioButton_NAO" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="TextField_Tempo_quieta" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
+            <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="Button_Criar" min="-2" pref="100" max="-2" attributes="0"/>
+                <Group type="102" attributes="0">
+                  <Component id="Label_Nome" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="TextField_Nome" min="-2" pref="158" max="-2" attributes="0"/>
+                </Group>
+                <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="Separador" max="32767" attributes="0"/>
+                  <Component id="Label_NovaCrianca" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Label_Tempo_quieto" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label_Tempo_brincando" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                    <Component id="Label_Id" min="-2" max="-2" attributes="0"/>
+                    <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                    <Component id="TextField_ID" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                </Group>
+                <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <Component id="Label_Campo_obrigatorio" min="-2" pref="219" max="-2" attributes="0"/>
+                </Group>
+                <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                  <Component id="TextField_Tempo_brincando" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                    <Component id="Label_Possui_bola" min="-2" max="-2" attributes="0"/>
+                    <EmptySpace type="separate" max="-2" attributes="0"/>
+                    <Component id="RadioButton_SIM" min="-2" max="-2" attributes="0"/>
+                    <EmptySpace type="separate" max="-2" attributes="0"/>
+                    <Component id="RadioButton_NAO" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="TextField_Tempo_quieta" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
+                </Group>
               </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+            </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="Label_NovaCrianca" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="Separador" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Label_Id" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextField_ID" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Label_Nome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextField_Nome" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="RadioButton_SIM" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="RadioButton_NAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Label_Possui_bola" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Label_Tempo_brincando" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextField_Tempo_brincando" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Label_Tempo_quieto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextField_Tempo_quieta" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Label_Campo_obrigatorio" min="-2" pref="29" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Button_Criar" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+            <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Component id="Label_NovaCrianca" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="Separador" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="Label_Id" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="TextField_ID" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="Label_Nome" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="TextField_Nome" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="RadioButton_SIM" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="RadioButton_NAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="Label_Possui_bola" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="Label_Tempo_brincando" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="TextField_Tempo_brincando" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="Label_Tempo_quieto" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="TextField_Tempo_quieta" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="Label_Campo_obrigatorio" min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Button_Criar" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
+            </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -496,62 +496,57 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelCrianca1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca6" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabelCrianca7" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelCrianca2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jLabelCrianca3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                          <Component id="jLabelCrianca8" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelCrianca9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca4" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="100" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelCrianca10" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca5" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+            <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="jLabelCrianca1" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca6" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="jLabelCrianca7" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="jLabelCrianca3" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca8" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                <Component id="jLabelCrianca9" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca4" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                <Component id="jLabelCrianca10" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca5" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+            </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelCrianca6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelCrianca1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCrianca5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+            <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="jLabelCrianca6" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca7" alignment="0" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca8" alignment="1" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca9" alignment="0" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca10" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="jLabelCrianca1" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca2" alignment="0" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca3" alignment="0" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca4" alignment="0" min="-2" max="-2" attributes="0"/>
+                <Component id="jLabelCrianca5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+            </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -562,6 +557,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca1"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca2">
@@ -570,6 +567,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca2"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca3">
@@ -578,6 +577,9 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca3"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca4">
@@ -586,6 +588,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca4"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca5">
@@ -594,6 +598,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca5"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca6">
@@ -602,6 +608,9 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca6"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca7">
@@ -610,6 +619,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca7"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca8">
@@ -618,6 +629,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca8"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca9">
@@ -626,6 +639,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca9"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCrianca10">
@@ -634,6 +649,8 @@
               <Image iconType="3" name="/view/imagens/crianca_estado1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crianca10"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="1"/>
           </Properties>
         </Component>
       </SubComponents>

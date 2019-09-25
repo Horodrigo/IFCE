@@ -873,64 +873,86 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca1.setText("Crianca1");
+        jLabelCrianca1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca2.setText("Crianca2");
+        jLabelCrianca2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca2.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca3.setText("Crianca3");
+        jLabelCrianca3.setFocusable(false);
+        jLabelCrianca3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca3.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca4.setText("Crianca4");
+        jLabelCrianca4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca5.setText("Crianca5");
+        jLabelCrianca5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca5.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca6.setText("Crianca6");
+        jLabelCrianca6.setFocusable(false);
+        jLabelCrianca6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca6.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca7.setText("Crianca7");
+        jLabelCrianca7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca7.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca8.setText("Crianca8");
+        jLabelCrianca8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca8.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca9.setText("Crianca9");
+        jLabelCrianca9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca9.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
         jLabelCrianca10.setText("Crianca10");
+        jLabelCrianca10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelCrianca10.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout painelImagemQuadra1Layout = new javax.swing.GroupLayout(painelImagemQuadra1);
         painelImagemQuadra1.setLayout(painelImagemQuadra1Layout);
-        painelImagemQuadra1Layout.setHorizontalGroup(painelImagemQuadra1Layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelImagemQuadra1Layout.createSequentialGroup().addGap(92, 92, 92)
-                        .addGroup(
-                                painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelCrianca1).addComponent(jLabelCrianca6))
-                        .addGroup(painelImagemQuadra1Layout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(painelImagemQuadra1Layout.createSequentialGroup().addGap(127, 127, 127)
+        painelImagemQuadra1Layout
+                .setHorizontalGroup(
+                        painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelImagemQuadra1Layout.createSequentialGroup().addGap(92, 92, 92)
+                                        .addGroup(painelImagemQuadra1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabelCrianca1).addComponent(jLabelCrianca6))
+                                        .addGap(114, 114, 114)
+                                        .addGroup(painelImagemQuadra1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabelCrianca7).addComponent(jLabelCrianca2))
+                                        .addGap(76, 76, 76)
+                                        .addGroup(painelImagemQuadra1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabelCrianca3).addComponent(jLabelCrianca8))
+                                        .addGap(79, 79, 79)
                                         .addGroup(painelImagemQuadra1Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabelCrianca7).addComponent(jLabelCrianca2))
-                                        .addGap(35, 35, 35).addComponent(jLabelCrianca3))
-                                .addGroup(painelImagemQuadra1Layout
-                                        .createSequentialGroup().addGap(241, 241, 241).addComponent(jLabelCrianca8)))
-                        .addGap(33, 33, 33)
-                        .addGroup(
-                                painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelCrianca9).addComponent(jLabelCrianca4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addGroup(
-                                painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelCrianca10).addComponent(jLabelCrianca5))
-                        .addGap(112, 112, 112)));
+                                                .addComponent(jLabelCrianca9).addComponent(jLabelCrianca4))
+                                        .addGap(90, 90, 90)
+                                        .addGroup(painelImagemQuadra1Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabelCrianca10).addComponent(jLabelCrianca5))
+                                        .addGap(112, 112, 112)));
         painelImagemQuadra1Layout.setVerticalGroup(painelImagemQuadra1Layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(239, 239, 239)
                         .addGroup(painelImagemQuadra1Layout
                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabelCrianca6).addComponent(jLabelCrianca7).addComponent(jLabelCrianca8)
@@ -1010,7 +1032,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(23, 23, 23)));
         layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
                 javax.swing.GroupLayout.Alignment.TRAILING,
-                layout.createSequentialGroup().addContainerGap(12, Short.MAX_VALUE).addGroup(layout
+                layout.createSequentialGroup().addGap(12, 12, 12).addGroup(layout
                         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -1018,7 +1040,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelCapacidade_cesto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelQuantidade_atual_cesto).addGap(0, 30, Short.MAX_VALUE))
+                                .addComponent(jLabelQuantidade_atual_cesto).addGap(30, 30, 30))
                         .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

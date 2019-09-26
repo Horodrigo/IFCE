@@ -5,8 +5,8 @@
  */
 package view;
 
-import br.edu.ifce.log.TabelaLog;
-import br.edu.ifce.thread.Crianca;
+import log.TabelaLog;
+import thread.Crianca;
 import static java.awt.Color.RED;
 import java.util.concurrent.Semaphore;
 import javax.swing.*;
@@ -35,14 +35,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         
-        JOptionPane.showMessageDialog(null, "Bem-vindo à Brincadeira de Crianças! Vamos brincar? =D", "Seja bem-vindo!", JOptionPane.INFORMATION_MESSAGE);
-        
         this.capacidadeDoCesto = this.lerCapacidadeDoCesto(this.maximaCapacidadeDoCesto);
         
         /* Cria os semáforos e seta um valor inicial para eles.
          * mutex inicia com 1;
          * cesto_full inicia com zero;
-         * cesto_empty inicia com a capacidade do cesto lida na linha 40;
+         * cesto_empty inicia com a capacidade do cesto lida na linha 38;
          */
         cesto_full = new Semaphore(0);
         cesto_empty = new Semaphore(this.capacidadeDoCesto);
@@ -126,7 +124,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public void adicionarBolaNoCesto(){
         this.quantidadeBolasCesto++;
-        String diretorio = "/br/edu/ifce/view/imagens/";
+        String diretorio = "/view/imagens/";
         
         if(this.quantidadeBolasCesto == this.capacidadeDoCesto)
             this.jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_cheio.png")));
@@ -145,7 +143,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public void removerBolaDoCesto(){
         this.quantidadeBolasCesto--;
-        String diretorio = "/br/edu/ifce/view/imagens/";
+        String diretorio = "/view/imagens/";
         
         if(this.quantidadeBolasCesto == 0)
             this.jLabelCesto.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/cesto_sem_bola.png")));
@@ -280,6 +278,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.tabelaLog.adicionarLinha((Crianca)crianca);
     } //Fim adicionarCrianca();
     
+    
     /* Mostra o texto de log recebido como parâmetro na JTextArea da tela.
      * Função bastante utilizada ao longo da thread Criança e nos seus respectivos métodos.
      */
@@ -289,196 +288,143 @@ public class TelaPrincipal extends javax.swing.JFrame {
     } //Fim logMessage();
     
     //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
-    public void mostrarCriancaBrincando_estado1(long id, String nome) {
-        String diretorio = "/br/edu/ifce/view/imagens/";
+    public void mostrarCriancaBrincando(long id, String nome) {
+        String diretorio = "/view/imagens/";
         
         if(id == 1L){
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));           
+
         } else if(id == 2L){
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 3L){
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 4L){
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 5L){
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 6L){
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 7L){
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 8L){
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 9L){
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         } else if(id == 10L){
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.png")));
+                this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado1.gif")));
+                this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.gif")));
+                this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado3.gif")));
+                this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado4.gif")));
         }
     } //Fim mostraCriancaBrincando_estado1();
     
     //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
-    public void mostrarCriancaBrincando_estado2(long id, String nome) {
-        String diretorio = "/br/edu/ifce/view/imagens/";
+    public void mostrarCriancaQuieta(long id, String nome) {
+        String diretorio = "/view/imagens/";
         
         if(id == 1L){
             this.jLabelCrianca1.setVisible(true);
             this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));           
         } else if(id == 2L){
             this.jLabelCrianca2.setVisible(true);
             this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 3L){
             this.jLabelCrianca3.setVisible(true);
             this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 4L){
             this.jLabelCrianca4.setVisible(true);
             this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 5L){
             this.jLabelCrianca5.setVisible(true);
             this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 6L){
             this.jLabelCrianca6.setVisible(true);
             this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 7L){
             this.jLabelCrianca7.setVisible(true);
             this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 8L){
             this.jLabelCrianca8.setVisible(true);
             this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 9L){
             this.jLabelCrianca9.setVisible(true);
             this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         } else if(id == 10L){
             this.jLabelCrianca10.setVisible(true);
             this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_estado2.png")));
+                this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
+                this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
         }
-    } //Fim mostraCriancaBrincando_estado2();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
-    public void mostrarCriancaQuieta_estado1(long id, String nome) {
-        String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
-            this.jLabelCrianca1.setVisible(true);
-            this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 2L){
-            this.jLabelCrianca2.setVisible(true);
-            this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 3L){
-            this.jLabelCrianca3.setVisible(true);
-            this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 4L){
-            this.jLabelCrianca4.setVisible(true);
-            this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 5L){
-            this.jLabelCrianca5.setVisible(true);
-            this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 6L){
-            this.jLabelCrianca6.setVisible(true);
-            this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 7L){
-            this.jLabelCrianca7.setVisible(true);
-            this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 8L){
-            this.jLabelCrianca8.setVisible(true);
-            this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 9L){
-            this.jLabelCrianca9.setVisible(true);
-            this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        } else if(id == 10L){
-            this.jLabelCrianca10.setVisible(true);
-            this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado1.png")));
-        }
-    } //Fim mostrarCriancaQuieta_estado1();
-    
-    //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
-    public void mostrarCriancaQuieta_estado2(long id, String nome) {
-        String diretorio = "/br/edu/ifce/view/imagens/";
-        
-        if(id == 1L){
-            this.jLabelCrianca1.setVisible(true);
-            this.jLabelCrianca1.setText(nome);
-            this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 2L){
-            this.jLabelCrianca2.setVisible(true);
-            this.jLabelCrianca2.setText(nome);
-            this.jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 3L){
-            this.jLabelCrianca3.setVisible(true);
-            this.jLabelCrianca3.setText(nome);
-            this.jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 4L){
-            this.jLabelCrianca4.setVisible(true);
-            this.jLabelCrianca4.setText(nome);
-            this.jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 5L){
-            this.jLabelCrianca5.setVisible(true);
-            this.jLabelCrianca5.setText(nome);
-            this.jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 6L){
-            this.jLabelCrianca6.setVisible(true);
-            this.jLabelCrianca6.setText(nome);
-            this.jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 7L){
-            this.jLabelCrianca7.setVisible(true);
-            this.jLabelCrianca7.setText(nome);
-            this.jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 8L){
-            this.jLabelCrianca8.setVisible(true);
-            this.jLabelCrianca8.setText(nome);
-            this.jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 9L){
-            this.jLabelCrianca9.setVisible(true);
-            this.jLabelCrianca9.setText(nome);
-            this.jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        } else if(id == 10L){
-            this.jLabelCrianca10.setVisible(true);
-            this.jLabelCrianca10.setText(nome);
-            this.jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_quieta_estado2.png")));
-        }
-    } //Fim mostrarCriancaQuieta_estado2();
-        
+    } //Fim mostrarCriancaQuieta();
+     
     //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaAguardandoVagaNoCesto(long id) {
-        String diretorio = "/br/edu/ifce/view/imagens/";
+        String diretorio = "/view/imagens/";
         
         if(id == 1L){
             this.jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource(diretorio + "/crianca_aguardando_vaga.png")));
@@ -505,7 +451,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //Atualiza a imagem da criança de acordo com o ID passado como parâmetro. Assim o programa saberá qual criança deverá ser atualizada.
     public void mostrarCriancaAguardandoBola(long id, String nome) {
-        String diretorio = "/br/edu/ifce/view/imagens/";
+        String diretorio = "/view/imagens/";
         
         if(id == 1L){
             this.jLabelCrianca1.setVisible(true);
@@ -577,6 +523,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TextField_Tempo_brincando = new javax.swing.JTextField();
         TextField_Tempo_quieta = new javax.swing.JTextField();
         Button_Criar = new javax.swing.JButton();
+        Button_Remover = new javax.swing.JButton();
         Label_Campo_obrigatorio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea_Log = new javax.swing.JTextArea();
@@ -614,7 +561,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Panel_ControleDeCriancas.setName("teste"); // NOI18N
 
         Label_NovaCrianca.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        Label_NovaCrianca.setText("Nova Criança");
+        Label_NovaCrianca.setText("Controller Criança");
 
         RadioButton_SIM.setBackground(new java.awt.Color(255, 255, 204));
         buttonGroup_possuiBola.add(RadioButton_SIM);
@@ -672,6 +619,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        Button_Remover.setBackground(new java.awt.Color(153, 255, 204));
+        Button_Remover.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        Button_Remover.setText("Remover");
+        Button_Remover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_RemoverActionPerformed(evt);
+            }
+        });
+
         Label_Campo_obrigatorio.setBackground(new java.awt.Color(255, 255, 204));
         Label_Campo_obrigatorio.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         Label_Campo_obrigatorio.setForeground(new java.awt.Color(255, 255, 204));
@@ -682,9 +638,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Panel_ControleDeCriancasLayout.setHorizontalGroup(
             Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ControleDeCriancasLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
+                        .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Button_Remover, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_ControleDeCriancasLayout.createSequentialGroup()
                         .addComponent(Label_Nome)
                         .addGap(23, 23, 23)
@@ -743,8 +702,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Label_Campo_obrigatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGroup(Panel_ControleDeCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_Criar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Remover, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
 
         TextArea_Log.setColumns(20);
@@ -772,54 +733,54 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelImagemQuadra1.setMinimumSize(new java.awt.Dimension(900, 570));
         painelImagemQuadra1.setPreferredSize(new java.awt.Dimension(900, 570));
 
-        jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca1.setText("Crianca1");
         jLabelCrianca1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca2.setText("Crianca2");
         jLabelCrianca2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca2.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca3.setText("Crianca3");
         jLabelCrianca3.setFocusable(false);
         jLabelCrianca3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca3.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca4.setText("Crianca4");
         jLabelCrianca4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca5.setText("Crianca5");
         jLabelCrianca5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca5.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca6.setText("Crianca6");
         jLabelCrianca6.setFocusable(false);
         jLabelCrianca6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca6.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca7.setText("Crianca7");
         jLabelCrianca7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca7.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca8.setText("Crianca8");
         jLabelCrianca8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca8.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca9.setText("Crianca9");
         jLabelCrianca9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca9.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.png"))); // NOI18N
+        jLabelCrianca10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/crianca_estado1.gif"))); // NOI18N
         jLabelCrianca10.setText("Crianca10");
         jLabelCrianca10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelCrianca10.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
@@ -855,19 +816,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemQuadra1Layout.createSequentialGroup()
                 .addGap(239, 239, 239)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCrianca6)
+                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCrianca7)
-                    .addComponent(jLabelCrianca8)
+                    .addComponent(jLabelCrianca8, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelCrianca9)
-                    .addComponent(jLabelCrianca10))
+                    .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelCrianca6)
+                        .addComponent(jLabelCrianca10)))
                 .addGap(29, 29, 29)
-                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCrianca1)
+                .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCrianca2)
                     .addComponent(jLabelCrianca3)
                     .addComponent(jLabelCrianca4)
-                    .addComponent(jLabelCrianca5))
+                    .addGroup(painelImagemQuadra1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelCrianca1)
+                        .addComponent(jLabelCrianca5)))
                 .addGap(102, 102, 102))
         );
 
@@ -926,7 +889,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelImagemQuadra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Panel_ControleDeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCapacidade_cesto)
@@ -1030,6 +993,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
     }//GEN-LAST:event_menuItem_SobreActionPerformed
 
+    private void Button_RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_RemoverActionPerformed
+        // TODO add your handling code here:
+        this.setBordaCinza();
+        
+        
+    }//GEN-LAST:event_Button_RemoverActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -1074,6 +1044,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Criar;
+    private javax.swing.JButton Button_Remover;
     private javax.swing.JLabel Label_Campo_obrigatorio;
     private javax.swing.JLabel Label_Id;
     private javax.swing.JLabel Label_Nome;

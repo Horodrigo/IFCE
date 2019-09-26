@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  * https://www.youtube.com/watch?v=G9I0IGF1wIA
  */
 public class PainelImagemQuadra extends javax.swing.JPanel {
-    String diretorio = "/br/edu/ifce/view/imagens/quadra_basquete_rua.jpg";
+    String diretorio = "/view/imagens/quadra_basquete_rua.jpg";
     ImageIcon fundo = new ImageIcon(getClass().getResource(diretorio));
     
     @Override

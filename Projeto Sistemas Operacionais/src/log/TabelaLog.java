@@ -62,4 +62,9 @@ public class TabelaLog extends AbstractTableModel{
         this.fireTableDataChanged();
     }
     
+    public void removerLinha(Crianca crianca){
+        this.criancas.remove(crianca);
+        this.fireTableDataChanged();
+    }
+    
 }

@@ -12,8 +12,8 @@ import java.util.concurrent.Semaphore;
 import javax.swing.*;
 
 /**
- *
- * @author Eduardo
+ *  @authors Eduardo, Horodrigo
+ * 
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -277,6 +277,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.logMessage("\n***Criança " + nome + " criada***\n");
         this.tabelaLog.adicionarLinha((Crianca)crianca);
     } //Fim adicionarCrianca();
+    
+    private void removeCrianca(){
+        
+        if(this.id < 2){
+            JOptionPane.showMessageDialog(this, "Não há crianças a serem removidas", "Impossível remover", JOptionPane.ERROR_MESSAGE);
+        } else {
+            this.id = this.id - 1; //Id volta 1
+            this.TextField_ID.setText(Long.toString(this.id)); //Atualiza o ID na tela;
+        }
+        
+        // Thread crianca = 
+        // crianca.interrupt(); //Finaliza a execução da thread
+        
+        // this.logMessage("\n***Criança " + crianca.getName() + " removida***\n");
+        
+        // this.tabelaLog.removerLinha((Crianca)crianca);
+        
+    } //Fim removerCrianca();
     
     
     /* Mostra o texto de log recebido como parâmetro na JTextArea da tela.
@@ -996,8 +1014,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void Button_RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_RemoverActionPerformed
         // TODO add your handling code here:
         this.setBordaCinza();
-        
-        
+ 
+           this.removeCrianca();
+            
+            this.setBordaCinza();
+ 
     }//GEN-LAST:event_Button_RemoverActionPerformed
 
     
